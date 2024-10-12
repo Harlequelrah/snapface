@@ -3,5 +3,8 @@
   <img [src]="imageUrl" [alt]="title" width="30%">
   <p>{{description}}</p>
   <p>Créée le : {{createdAt}}</p>
-  <p>💕Snaps: {{snaps}} </p>
+  <p>
+    <button (click)="onSnap()">{{snapButtonText}}</button>
+    💕Snaps: {{snaps}}
+  </p>
 </div>
