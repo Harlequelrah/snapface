@@ -1,5 +1,5 @@
 export default class FaceSnap {
-    location?:string
+    location?: string
     constructor(
         public title: string,
         public description: string,
@@ -17,5 +17,9 @@ export default class FaceSnap {
 
     setLocation(location: string): void {
         this.location = location;
+    }
+    withLocation(location: string): FaceSnap{
+        this.setLocation(location)
+        return this;
     }
 }
