@@ -11,9 +11,6 @@ import FaceSnap from './models/face-snap';
 })
 export class AppComponent {
   faceSnaps!: FaceSnap[];
-  // mySnap!: FaceSnap;
-  // otherSnap!: FaceSnap;
-  // lastSnap!: FaceSnap;
   ngOnInit(): void {
     this.faceSnaps = [
       new FaceSnap(
