@@ -1,6 +1,6 @@
 import { SnapType } from "./snap-type.type";
 
-export default class FaceSnap {
+export class FaceSnap {
     location?: string
     id:string
     constructor(

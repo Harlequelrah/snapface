@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import FaceSnap from "../models/face-snap";
 import { SnapType } from "../models/snap-type.type";
+import { FaceSnap } from "../models/face-snap";
 
 @Injectable({ providedIn: 'root' })
 
-export default class FaceSnapsService {
+export  class FaceSnapsService {
     private faceSnaps: FaceSnap[] = [new FaceSnap(
         'Harlequelrah',
         'Another pseudo of Harlequin',
