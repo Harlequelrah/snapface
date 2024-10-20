@@ -3,10 +3,10 @@ this is a beginner image sharing project
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
 ## Screenshot
-![LoadingPage](ANGULAR\snapface\screenshots\screenshot_2png)
-![SnapfacesPage](screenshots\screenshot_3.png)
-![SnapfacePagePart1](screenshots\screenshot_4.png)
-![SnapfacePagePart2](screenshots\screenshot_1.png)
+![LoadingPage](screenshots/screenshot_2.png)
+![SnapfacesPage](screenshots/screenshot_3.png)
+![SnapfacePagePart1](screenshots/screenshot_4.png)
+![SnapfacePagePart2](screenshots/screenshot_1.png)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
