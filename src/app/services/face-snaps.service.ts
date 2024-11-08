@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SnapType } from "../models/snap-type.type";
 import { FaceSnap } from "../models/face-snap";
+import { FaceSnapInterface } from "../../interfaces/face-snap.interface";
 
 @Injectable({ providedIn: 'root' })
 
@@ -28,6 +29,18 @@ export  class FaceSnapsService {
         )
 
     ]
+    addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }): void {
+        const faceSnap = new FaceSnap(
+            formValue.title,
+            formValue.description,
+            formValue.imageUrl,
+            new Date(),
+            0,
+        )
+        faceSnap.setLocation(formValue.location??'');
+        this.faceSnaps.push(faceSnap);
+    }
+
     getFaceSnaps(): FaceSnap[]
     {
         return [...this.faceSnaps]
