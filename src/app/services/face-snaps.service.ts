@@ -52,8 +52,11 @@ export class FaceSnapsService {
 
     snapFaceSnapById(faceSnapId: string , snapType : SnapType) : void
     {
-        const faceSnap = this.getFaceSnapById(faceSnapId)
-        // faceSnap.snap(snapType)
+        this.getFaceSnapById(faceSnapId).subscribe(faceSnapRetrived => {
+            const faceSnap = faceSnapRetrived
+            faceSnap.snap(snapType)
+            //return from(fetch(this.Url + 'facesnaps/update-face-s))
+        })
     }
 
 
@@ -61,11 +64,6 @@ export class FaceSnapsService {
     {
         return from(fetch(this.Url + 'facesnaps/get-face-snap/'+faceSnapId)
         .then(response=>response.json()))
-        // const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId)
-        // if (!faceSnap) {
-        //     throw new Error('FaceSnap Not Found')
-        // }
-        // return faceSnap
     }
 
 

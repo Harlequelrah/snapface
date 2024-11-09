@@ -12,11 +12,13 @@ export class FaceSnap {
     ) {
         this.id=crypto.randomUUID().substring(0,8)
     }
-    addSnap(): void {
+    addSnap(): FaceSnap {
         this.snaps++;
+        return this;
     }
-    removeSnap(): void{
+    removeSnap(): FaceSnap{
         this.snaps--;
+        return this;
     }
     snap(snaptype: SnapType): void {
         if(snaptype ==='snap'){
