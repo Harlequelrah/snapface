@@ -1,4 +1,5 @@
-@for(faceSnap of faceSnaps; track faceSnap.id)
+<!-- @for(faceSnap of faceSnaps; track faceSnap.id)
 {
 <app-face-snap [faceSnap]="faceSnap" />
-}
+} -->
+<app-face-snap *ngFor="let faceSnap of faceSnaps$ | async " [faceSnap]="faceSnap"></app-face-snap>

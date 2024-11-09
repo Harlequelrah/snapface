@@ -2,10 +2,12 @@ import { Injectable } from "@angular/core";
 import { SnapType } from "../models/snap-type.type";
 import { FaceSnap } from "../models/face-snap";
 import { FaceSnapInterface } from "../../interfaces/face-snap.interface";
+import { from, Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 
-export  class FaceSnapsService {
+export class FaceSnapsService {
+    private Url ='http://127.0.0.1:8000/'
     private faceSnaps: FaceSnap[] = [new FaceSnap(
         'Harlequelrah',
         'Another pseudo of Harlequin',
@@ -41,25 +43,29 @@ export  class FaceSnapsService {
         this.faceSnaps.push(faceSnap);
     }
 
-    getFaceSnaps(): FaceSnap[]
+    getFaceSnaps(): Observable<FaceSnap[]>
     {
-        return [...this.faceSnaps]
+        return from(fetch(this.Url + 'facesnaps/')
+        .then(response => response.json()))
     }
+
 
     snapFaceSnapById(faceSnapId: string , snapType : SnapType) : void
     {
         const faceSnap = this.getFaceSnapById(faceSnapId)
-        faceSnap.snap(snapType)
+        // faceSnap.snap(snapType)
     }
 
 
-    getFaceSnapById(faceSnapId: string) : FaceSnap
+    getFaceSnapById(faceSnapId: string) : Observable<FaceSnap>
     {
-        const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId)
-        if (!faceSnap) {
-            throw new Error('FaceSnap Not Found')
-        }
-        return faceSnap
+        return from(fetch(this.Url + 'facesnaps/get-face-snap/'+faceSnapId)
+        .then(response=>response.json()))
+        // const faceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId)
+        // if (!faceSnap) {
+        //     throw new Error('FaceSnap Not Found')
+        // }
+        // return faceSnap
     }
 
 
