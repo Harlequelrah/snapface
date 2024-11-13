@@ -4,8 +4,8 @@ import { AsyncPipe, DatePipe, NgClass, NgIf, NgStyle, TitleCasePipe } from '@ang
 import { FaceSnap } from '../models/face-snap';
 import { FaceSnapsService } from '../services/face-snaps.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Observable } from 'rxjs';
-
+import { Observable, tap } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http'
 @Component({
   selector: 'app-single-face-snap',
   standalone: true,
@@ -27,24 +27,36 @@ export class SingleFaceSnapComponent implements OnInit {
 
   }
 
-  onSnap(): void {
+  onSnap(snapFaceId:number): void {
     this.userHasSnaped = !this.userHasSnaped;
-    if (this.userHasSnaped) this.snap()
-    else this.unSnap()
+    if (this.userHasSnaped) this.snap(snapFaceId)
+    else this.unSnap(snapFaceId)
   }
-  snap(): void {
-    this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap')
-    this.snapButtonText = "Oops unSnap !"
+  snap(snapFaceId: number): void {
+    this.faceSnap$=this.faceSnapsService.snapFaceSnapById(snapFaceId, 'snap').pipe(
+      tap(() =>
+      {
+        this.snapButtonText = "Oops unSnap !"
+      })
+    )
+
+
   }
-  unSnap(): void {
-    this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap')
-    this.snapButtonText = "Oh Snap !"
+  unSnap(snapFaceId: number): void {
+    this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(snapFaceId, 'unsnap').pipe(
+      tap(() => {
+        this.snapButtonText = "Oh Snap !"
+      })
+    )
+
+
   }
   private getFaceSnap(): void {
     const faceSnapId = this.route.snapshot.params['id'];
     this.faceSnap$ = this.faceSnapsService.getFaceSnapById(faceSnapId)
     this.faceSnap$.subscribe((faceSnap) => {
-      this.faceSnap = faceSnap;
+      this.faceSnap = faceSnap
+
     })
   }
   private prepareInterface(): void {
