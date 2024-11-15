@@ -1,9 +1,8 @@
-import { Injectable } from "@angular/core";
-import { SnapType } from "../models/snap-type.type";
-import { FaceSnap } from "../models/face-snap";
-import { FaceSnapInterface } from "../../interfaces/face-snap.interface";
-import { from, map, Observable, switchMap, } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { map, Observable, switchMap } from "rxjs";
+import { FaceSnap } from "../models/face-snap";
+import { SnapType } from "../models/snap-type.type";
 
 @Injectable({ providedIn: 'root' })
 

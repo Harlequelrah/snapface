@@ -1,11 +1,12 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
-import { FaceSnap } from '../models/face-snap';
+import { FaceSnap } from '../../../core/models/face-snap';
 import { Router } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
-import { FaceSnapsService } from '../services/face-snaps.service';
+
 import { switchMap, tap } from 'rxjs';
+import { FaceSnapsService } from '../../../core/services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -14,11 +15,10 @@ import { switchMap, tap } from 'rxjs';
   templateUrl: './face-snap.component.html',
   styleUrl: './face-snap.component.scss'
 })
-export class FaceSnapComponent  {
+export class FaceSnapComponent {
   @Input() faceSnap!: FaceSnap;
-  constructor(private route: Router, private faceSnapsService: FaceSnapsService)
-  {}
-  viewFaceSnap(): void{
+  constructor(private route: Router, private faceSnapsService: FaceSnapsService) { }
+  viewFaceSnap(): void {
     this.route.navigateByUrl(`/facesnap/${this.faceSnap.id}`)
   }
   deleteFaceSnap(): void {

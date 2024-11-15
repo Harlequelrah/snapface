@@ -1,21 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AsyncPipe, DatePipe, NgClass, NgIf, NgStyle, TitleCasePipe } from '@angular/common';
-import { FaceSnap } from '../models/face-snap';
-import { FaceSnapsService } from '../services/face-snaps.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http'
+import { FaceSnap } from '../../../core/models/face-snap';
+import { FaceSnapsService } from '../../../core/services/face-snaps.service';
+
 @Component({
   selector: 'app-single-face-snap',
   standalone: true,
-  imports: [NgStyle, NgClass, TitleCasePipe, DatePipe,RouterLink,NgIf,AsyncPipe],
+  imports: [NgStyle, NgClass, TitleCasePipe, DatePipe, RouterLink, NgIf, AsyncPipe],
   templateUrl: './single-face-snap.component.html',
   styleUrl: './single-face-snap.component.scss'
 })
 export class SingleFaceSnapComponent implements OnInit {
   faceSnap!: FaceSnap;
-  faceSnap$!:Observable<FaceSnap>;
+  faceSnap$!: Observable<FaceSnap>;
   userHasSnaped!: boolean;
   snapButtonText!: "Oh Snap !" | "Oops unSnap !";
   constructor(private faceSnapsService: FaceSnapsService, private route: ActivatedRoute) {
@@ -27,15 +27,14 @@ export class SingleFaceSnapComponent implements OnInit {
 
   }
 
-  onSnap(snapFaceId:number): void {
+  onSnap(snapFaceId: number): void {
     this.userHasSnaped = !this.userHasSnaped;
     if (this.userHasSnaped) this.snap(snapFaceId)
     else this.unSnap(snapFaceId)
   }
   snap(snapFaceId: number): void {
-    this.faceSnap$=this.faceSnapsService.snapFaceSnapById(snapFaceId, 'snap').pipe(
-      tap(() =>
-      {
+    this.faceSnap$ = this.faceSnapsService.snapFaceSnapById(snapFaceId, 'snap').pipe(
+      tap(() => {
         this.snapButtonText = "Oops unSnap !"
       })
     )

@@ -1,8 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { concatMap, delay, filter, interval, map, mergeMap,switchMap,exhaustMap, Observable, of, take, tap } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @Component({
   selector: 'app-root',
