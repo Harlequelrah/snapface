@@ -1,15 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FaceSnapComponent } from '../face-snap/face-snap.component';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { FaceSnap } from '../../../core/models/face-snap';
-import { interval, Observable, Subject, take, takeUntil, tap } from 'rxjs'
-import { AsyncPipe, NgFor } from '@angular/common';
 import { FaceSnapsService } from '../../../core/services/face-snaps.service';
 
 
 @Component({
   selector: 'app-face-snap-list',
-  standalone: true,
-  imports: [FaceSnapComponent, AsyncPipe, NgFor],
   templateUrl: './face-snap-list.component.html',
   styleUrl: './face-snap-list.component.scss'
 })

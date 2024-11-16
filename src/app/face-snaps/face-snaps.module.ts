@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, NgClass, NgIf, NgStyle, TitleCasePipe } from '@angular/common';
 import { FaceSnapComponent } from './components/face-snap/face-snap.component';
 import { SingleFaceSnapComponent } from './components/single-face-snap/single-face-snap.component';
 import { FaceSnapListComponent } from './components/face-snap-list/face-snap-list.component';
 import { NewFaceSnapComponent } from './components/new-face-snap/new-face-snap.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
+  declarations: [
     FaceSnapComponent,
     SingleFaceSnapComponent,
     FaceSnapListComponent,
-    NewFaceSnapComponent
+    NewFaceSnapComponent,
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -22,6 +27,17 @@ import { NewFaceSnapComponent } from './components/new-face-snap/new-face-snap.c
     SingleFaceSnapComponent,
     FaceSnapListComponent,
     NewFaceSnapComponent
+  ],
+  providers: [
+    DatePipe,
+    AsyncPipe,
+    NgClass,
+    NgIf,
+    NgStyle,
+    TitleCasePipe,
+    NgClass,
+    NgIf,
+    NgStyle
   ]
 })
 export class FaceSnapsModule { }

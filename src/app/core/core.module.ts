@@ -1,15 +1,21 @@
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 import { httpInterceptorsProvider } from './interceptors';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeaderComponent
+  ],
   imports: [
     CommonModule,
-    HeaderComponent
+    RouterLink,
+    RouterLinkActive,
+    RouterModule,
+    RouterOutlet
   ],
   exports: [
     HeaderComponent
