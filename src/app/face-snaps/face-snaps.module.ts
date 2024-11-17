@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { AsyncPipe, CommonModule, DatePipe, NgClass, NgIf, NgStyle, TitleCasePipe } from '@angular/common';
-import { FaceSnapComponent } from './components/face-snap/face-snap.component';
-import { SingleFaceSnapComponent } from './components/single-face-snap/single-face-snap.component';
-import { FaceSnapListComponent } from './components/face-snap-list/face-snap-list.component';
-import { NewFaceSnapComponent } from './components/new-face-snap/new-face-snap.component';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FaceSnapListComponent } from './components/face-snap-list/face-snap-list.component';
+import { FaceSnapComponent } from './components/face-snap/face-snap.component';
+import { NewFaceSnapComponent } from './components/new-face-snap/new-face-snap.component';
+import { SingleFaceSnapComponent } from './components/single-face-snap/single-face-snap.component';
+import { FaceSnapRoutingModule } from './face-snap-routing.module';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+
 
 
 
@@ -19,7 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    FaceSnapRoutingModule,
   ],
   exports: [
     CommonModule,

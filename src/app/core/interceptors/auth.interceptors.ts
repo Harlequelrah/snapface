@@ -5,8 +5,8 @@ import { AuthService } from "../services/auth.service";
 
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor{
-    constructor(private auth: AuthService){}
+export class AuthInterceptor implements HttpInterceptor {
+    constructor(private auth: AuthService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const headers = new HttpHeaders()
             .append('Authorization', `Bearer ${this.auth.getToken()}`)

@@ -16,7 +16,7 @@ export class FaceSnapComponent {
   @Input() faceSnap!: FaceSnap;
   constructor(private route: Router, private faceSnapsService: FaceSnapsService) { }
   viewFaceSnap(): void {
-    this.route.navigateByUrl(`/facesnap/${this.faceSnap.id}`)
+    this.route.navigateByUrl(`/facesnaps/${this.faceSnap.id}`)
   }
   deleteFaceSnap(): void {
     this.faceSnapsService.deleteFaceSnap(this.faceSnap.id).pipe(

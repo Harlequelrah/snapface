@@ -13,6 +13,6 @@ ngOnInit(): void {
 
   }
   onAddNewFaceSnap(): void{
-    this.router.navigateByUrl('/create');
+    this.router.navigateByUrl('/facesnaps/create');
   }
 }
